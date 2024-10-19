@@ -10,6 +10,7 @@ engine = create_engine(
 # セッションを作成
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+
 def get_db():
     db = SessionLocal()
     try:

@@ -1,5 +1,5 @@
-from api.database.repository.message import MessageRepository
-from api.domain.entity.message import MessageEntity
+from api.repository.message import MessageRepository
+from api.entity.message import MessageEntity
 from sqlalchemy.orm import Session
 
 

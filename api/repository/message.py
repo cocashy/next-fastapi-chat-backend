@@ -1,7 +1,7 @@
-from sqlalchemy.orm import Session
-from api.database.model.message import MessageModel
-from api.domain.entity.message import MessageEntity
 import uuid
+from sqlalchemy.orm import Session
+from api.model.message import MessageModel
+from api.entity.message import MessageEntity
 
 
 class MessageRepository:
@@ -17,10 +17,10 @@ class MessageRepository:
         self.db.add(message_model)
         self.db.commit()
         self.db.refresh(message_model)
-        return message_model.to_entity()
+        return MessageEntity.from_model(message_model)
 
     def find_all(self) -> list[MessageEntity]:
         return [
-            message_model.to_entity()
+            MessageEntity.from_model(message_model)
             for message_model in self.db.query(MessageModel).all()
         ]
